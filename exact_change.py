@@ -37,6 +37,7 @@ else:
         print(f'{dollars} Dollars' if dollars > 1 else '1 Dollar')
     if quarters > 0:
         print(f'{quarters} Quarters' if quarters > 1 else '1 Quarter')
-    print('Dimes', dimes)
-    print('Nickels', nickels)
-    print('Pennies', cents)
+    if dimes > 0:
+        print(f'{dimes} Dimes' if dimes > 1 else '1 Dime')
+    if cents > 0:
+        print(f'{cents} Pennies' if cents > 1 else '1 Penny')

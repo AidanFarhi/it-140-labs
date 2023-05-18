@@ -20,8 +20,8 @@ the output is:
 """
 
 # Get number of cents from standard input
-cents = int(input())
-original_cents = cents
+input_cents = int(input())
+cents = input_cents
 
 # Calculate the quantity of each coin
 dollars, cents = divmod(cents, 100)
@@ -30,7 +30,7 @@ dimes, cents = divmod(cents, 10)
 nickels, cents = divmod(cents, 5)
 
 # Print results using conditional logic
-if original_cents <= 0:
+if input_cents <= 0:
     print('No change')
 else:
     if dollars > 0:

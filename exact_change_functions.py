@@ -36,12 +36,15 @@ def exact_change(user_total: int) -> None:
 
 
 if __name__ == '__main__':
+    
+    # Get number of cents from standard input
+    input_cents = int(input())
 
-    input_val = int(input())
-    if input_val <= 0:
+    # Use conditional logic to determine what is printed to standard output
+    if input_cents <= 0:
         print('no change')
     else:
-        num_dollars, num_quarters, num_dimes, num_nickels, num_pennies = exact_change(input_val)
+        num_dollars, num_quarters, num_dimes, num_nickels, num_pennies = exact_change(input_cents)
         if num_dollars > 0:
             print(f'{num_dollars} dollars' if num_dollars > 1 else '1 dollar')
         if num_quarters > 0:

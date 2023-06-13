@@ -54,17 +54,25 @@ seasons_shows = {}
 # Get file name from standard input
 input_file_name = input()
 
-# TODO: Write a proper explaination here
+# Read all of the lines from the input file and
+# store each season count and show name in a dictionary
 with open(input_file_name, 'r') as file:
     lines = [str.strip(l) for l in file.readlines()]
     for i, line in enumerate(lines):
         if i % 2 == 0: # season number
-            if seasons_shows.get(int(line), None) is None:
+            if int(line) not in seasons_shows:
                 seasons_shows[int(line)] = []
         else: # show name
             seasons_shows[int(lines[i-1])].append(line)
 
-# Write each key and value in the desired format
+# Write to the output keys file
 with open(OUTPUT_KEYS_FILE_NAME, 'w') as output_keys_file:
     for season, shows in sorted(list(seasons_shows.items()), key=lambda x: x[0]):
         output_keys_file.write(f"{season}: {'; '.join(shows)}\n")
+
+# Write to the output titles file
+with open(OUTPUT_TITLES_FILE_NAME, 'w') as output_titles_file:
+    shows = []
+    for show_list in seasons_shows.values():
+        shows.extend([f'{s}\n' for s in show_list])    
+    output_titles_file.writelines(sorted(shows))
